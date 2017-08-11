@@ -94,9 +94,10 @@ BlockHeader.prototype.canonicalDifficulty = function (parentBlock) {
   var dif
 
   
-  // homestead
-  // 1 - (block_timestamp - parent_timestamp) // 10
-  var a = blockTs.sub(parentTs).idivn(10).ineg().iaddn(1)
+  // metro-byzantium
+  // max((2 if len(parent.uncles) else 1) - ((timestamp - parent.timestamp) // 9), -99)
+  var u = parentBlock.header.uncleHash === utils.SHA3_RLP ? 1 : 2
+  var a = blockTs.sub(parentTs).idivn(9).ineg().iaddn(u)
   var cutoff = new BN(-99)
   // MAX(cutoff, a)
   if (cutoff.cmp(a) === 1) {
