@@ -44,6 +44,6 @@ testing.runTests(function (data, st, cb) {
   st.equal(dif.toString(), data.currentDifficulty.toString())
   cb()
 }, {
-  difficulty: basicTests.difficulty,
+  //difficulty: basicTests.difficulty,
   difficultyHomestead: addHomesteadFlag(basicTests.difficultyHomestead)
 }, tape)
