@@ -18,21 +18,9 @@ Creates a new block object
 
 Produces a hash the RLP of the block
 
-## isGenisis
+## isGenesis
 
 Determines if a given block is the genesis block
-
-Returns **any** Boolean
-
-## isHomestead
-
-Determines if a given block part of homestead or not
-
-Returns **any** Boolean
-
-## isHomesteadReprice
-
-Determines if a given block part of homestead reprice or not
 
 Returns **any** Boolean
 
