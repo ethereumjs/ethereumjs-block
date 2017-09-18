@@ -11,6 +11,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
 [1.7.0]: https://github.com/ethereumjs/ethereumjs-vm/compare/v1.6.0...v1.7.0
 
+## [1.6.1] - 2017-09-19
+- Tightened dependencies to prevent the ``1.6.x`` version of the library to break
+  after ``ethereumjs`` Byzantium library updates
+
+[1.6.1]: https://github.com/ethereumjs/ethereumjs-block/compare/v1.6.0...v1.6.1
+
 ## [1.6.0] - 2017-07-12
 - Breakout header-from-rpc as separate module
 
