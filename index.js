@@ -142,7 +142,7 @@ Block.prototype.genTxTrie = function (cb) {
   var self = this
 
   async.eachSeries(this.transactions, function (tx, done) {
-    self.txTrie.put(rlp.encode(i), tx.serialize(), done)
+    self.txTrie.put(rlp.encode(i), new Tx(tx).serialize(), done)
     i++
   }, cb)
 }
