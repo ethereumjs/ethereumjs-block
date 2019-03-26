@@ -74,7 +74,7 @@ var Block = module.exports = function (data, opts) {
   const height = new BN(this.header.number).toNumber()
   for (i = 0; i < rawTransactions.length; i++) {
     var tx = new Tx(rawTransactions[i])
-    tx._homestead = height >= 1150000;
+    tx._homestead = height >= 1150000
     this.transactions.push(tx)
   }
 }
