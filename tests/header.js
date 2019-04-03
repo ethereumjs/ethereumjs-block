@@ -9,11 +9,11 @@ tape('[Block]: Header functions', function (t) {
   t.test('should create with default constructor', function (st) {
     function compareDefaultHeader (st, header) {
       st.deepEqual(header.parentHash, utils.zeros(32))
-      st.equal(header.uncleHash.toString('hex'), utils.SHA3_RLP_ARRAY_S)
+      st.equal(header.uncleHash.toString('hex'), utils.KECCAK256_RLP_ARRAY_S)
       st.deepEqual(header.coinbase, utils.zeros(20))
       st.deepEqual(header.stateRoot, utils.zeros(32))
-      st.equal(header.transactionsTrie.toString('hex'), utils.SHA3_RLP_S)
-      st.equal(header.receiptTrie.toString('hex'), utils.SHA3_RLP_S)
+      st.equal(header.transactionsTrie.toString('hex'), utils.KECCAK256_RLP_S)
+      st.equal(header.receiptTrie.toString('hex'), utils.KECCAK256_RLP_S)
       st.deepEqual(header.bloom, utils.zeros(256))
       st.deepEqual(header.difficulty, Buffer.from([]))
       st.deepEqual(header.number, utils.intToBuffer(1150000))

@@ -44,7 +44,7 @@ var BlockHeader = module.exports = function (data, opts) {
     default: utils.zeros(32)
   }, {
     name: 'uncleHash',
-    default: utils.SHA3_RLP_ARRAY
+    default: utils.KECCAK256_RLP_ARRAY
   }, {
     name: 'coinbase',
     length: 20,
@@ -56,11 +56,11 @@ var BlockHeader = module.exports = function (data, opts) {
   }, {
     name: 'transactionsTrie',
     length: 32,
-    default: utils.SHA3_RLP
+    default: utils.KECCAK256_RLP
   }, {
     name: 'receiptTrie',
     length: 32,
-    default: utils.SHA3_RLP
+    default: utils.KECCAK256_RLP
   }, {
     name: 'bloom',
     default: utils.zeros(256)
@@ -117,7 +117,7 @@ BlockHeader.prototype.canonicalDifficulty = function (parentBlock) {
 
   if (this._common.hardforkGteHardfork(hardfork, 'byzantium')) {
     // max((2 if len(parent.uncles) else 1) - ((timestamp - parent.timestamp) // 9), -99) (EIP100)
-    var uncleAddend = parentBlock.header.uncleHash.equals(utils.SHA3_RLP_ARRAY) ? 1 : 2
+    var uncleAddend = parentBlock.header.uncleHash.equals(utils.KECCAK256_RLP_ARRAY) ? 1 : 2
     a = blockTs.sub(parentTs).idivn(9).ineg().iaddn(uncleAddend)
     cutoff = new BN(-99)
     // MAX(cutoff, a)

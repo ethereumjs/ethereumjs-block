@@ -70,11 +70,8 @@ var Block = module.exports = function (data, opts) {
     this.uncleHeaders.push(new BlockHeader(rawUncleHeaders[i], opts))
   }
 
-  // parse transactions
-  const height = new BN(this.header.number).toNumber()
   for (i = 0; i < rawTransactions.length; i++) {
     var tx = new Tx(rawTransactions[i])
-    tx._homestead = height >= 1150000
     this.transactions.push(tx)
   }
 }
@@ -158,7 +155,7 @@ Block.prototype.validateTransactionsTrie = function () {
   if (this.transactions.length) {
     return txT === this.txTrie.root.toString('hex')
   } else {
-    return txT === ethUtil.SHA3_RLP.toString('hex')
+    return txT === ethUtil.KECCAK256_RLP.toString('hex')
   }
 }
 
@@ -236,7 +233,7 @@ Block.prototype.validateUnclesHash = function () {
   })
 
   raw = rlp.encode(raw)
-  return ethUtil.sha3(raw).toString('hex') === this.header.uncleHash.toString('hex')
+  return ethUtil.keccak256(raw).toString('hex') === this.header.uncleHash.toString('hex')
 }
 
 /**
