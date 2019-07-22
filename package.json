@@ -36,7 +36,7 @@
   "homepage": "https://github.com/ethereumjs/ethereumjs-block#readme",
   "dependencies": {
     "async": "^2.0.1",
-    "ethereumjs-common": "^1.1.0",
+    "ethereumjs-common": "^1.3.0",
     "ethereumjs-tx": "^2.1.0",
     "ethereumjs-util": "^6.1.0",
     "merkle-patricia-tree": "^2.1.2"
