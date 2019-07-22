@@ -1,6 +1,6 @@
 const Common = require('ethereumjs-common').default
 const ethUtil = require('ethereumjs-util')
-const Tx = require('ethereumjs-tx')
+const Tx = require('ethereumjs-tx').Transaction;
 const Trie = require('merkle-patricia-tree')
 const BN = ethUtil.BN
 const rlp = ethUtil.rlp
