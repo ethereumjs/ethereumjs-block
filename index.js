@@ -71,7 +71,7 @@ var Block = module.exports = function (data, opts) {
   }
 
   for (i = 0; i < rawTransactions.length; i++) {
-    var tx = new Tx(rawTransactions[i])
+    var tx = new Tx(rawTransactions[i], {common: this._common})
     this.transactions.push(tx)
   }
 }
