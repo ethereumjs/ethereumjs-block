@@ -65,13 +65,16 @@ var Block = module.exports = function (data, opts) {
     rawUncleHeaders = data.uncleHeaders || []
   }
 
+  const height = new BN(this.header.number).toNumber()
+  const hardfork = this._common.activeHardfork(height)
+  this._common.setHardfork(hardfork)
+
   // parse uncle headers
   for (var i = 0; i < rawUncleHeaders.length; i++) {
     this.uncleHeaders.push(new BlockHeader(rawUncleHeaders[i], opts))
   }
-
   for (i = 0; i < rawTransactions.length; i++) {
-    var tx = new Tx(rawTransactions[i], opts)
+    var tx = new Tx(rawTransactions[i], {common: this._common})
     this.transactions.push(tx)
   }
 }
