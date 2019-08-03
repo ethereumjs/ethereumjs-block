@@ -6,6 +6,77 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 (modification: no type change headlines) and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2019-08-06
+
+### TypeScript/Library Import
+
+First **TypeScript** based release of the library. The import structure has
+slightly changed along:
+
+**TypeScript**
+
+```typescript
+import { BlockHeader } from 'ethereumjs-block'
+import { Block } from 'ethereumjs-block'
+```
+
+**JavaScript/Node.js**
+
+```javascript
+const BlockHeader = require('ethereumjs-block').BlockHeader
+const Block = require('ethereumjs-block').Block
+```
+
+The library now also comes with a **type declaration file** distributed
+along with the package published.
+
+### Promise-based API
+
+The API of this library is now completely promise-based, the old callback-style
+interface has been dropped.
+
+This affects the following methods of the API now being defined as `async` and
+returning a `Promise`:
+
+**Header Class**
+
+- `BlockHeader.validate(blockchain: Blockchain, height?: BN): Promise<void>`
+
+**Block Class**
+
+- `Block.genTxTrie(): Promise<void>`
+- `Block.validate(blockChain: Blockchain): Promise<void>`
+- `Block.validateUncles(blockchain: Blockchain): Promise<void>`
+
+Usage example:
+
+```javascript
+try {
+  await block.validate(blockchain)
+  // Block validation has passed
+} catch (err) {
+  // handle errors appropriately
+}
+```
+
+### Change Summary
+
+Other changes along with the `TypeScript` transition PR
+[#72](https://github.com/ethereumjs/ethereumjs-block/pull/72)
+
+- Added Node `10`, `12` support, dropped Node `7` support
+- Browser test run on CI
+- Karma browser test run config modernization and simplification
+- Removal of the `async` dependency
+- Update `ethereumjs-common` dependency from `v1.1.0` to `v1.3.0`
+- Update `ethereumjs-tx` dependency from `v1.2.2` to `v2.1.0`
+- Update `ethereumjs-util` dependency from `v5.0.0` to `v6.1.0`
+- Updated test source files to `TypeScript`
+- Signature fix for pre-homestead blocks, see
+  [#67](https://github.com/ethereumjs/ethereumjs-block/issues/67)
+
+[3.0.0]: https://github.com/ethereumjs/ethereumjs-vm/compare/v2.2.0...v3.0.0
+
 ## [2.2.0] - 2019-02-06
 
 **Petersburg** (aka `constantinopleFix`) as well as **Goerli**

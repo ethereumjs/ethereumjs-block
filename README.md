@@ -17,7 +17,7 @@ This module work with `browserify`.
 
 # API
 
-[./docs](./docs/index.md)
+[./docs](./tree/master/docs)
 
 # TESTING
 
