@@ -5,6 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 (modification: no type change headlines) and this project adheres to 
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2019-11-14
+**Istanbul** support by updating to the most recent `ethereumjs-tx` version
+[v2.1.1](https://github.com/ethereumjs/ethereumjs-tx/releases/tag/v2.1.1).
+
+Please note that this release does not contain all the changes merged into
+master since the `v2.2.0` release and only backports the most recent
+`ethereumjs-tx` version to allow users to support Istanbul without having
+to go through migration to the `v3.0.0` which contains breaking changes.
+
+[2.2.1]: https://github.com/ethereumjs/ethereumjs-block/compare/v2.2.0...v2.2.1
 
 ## [2.2.0] - 2019-02-06
 **Petersburg** (aka `constantinopleFix`) as well as **Goerli** 
