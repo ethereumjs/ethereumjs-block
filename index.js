@@ -1,6 +1,6 @@
 const Common = require('ethereumjs-common').default
 const ethUtil = require('ethereumjs-util')
-const Tx = require('ethereumjs-tx')
+const { Transaction } = require('ethereumjs-tx')
 const Trie = require('merkle-patricia-tree')
 const BN = ethUtil.BN
 const rlp = ethUtil.rlp
@@ -72,7 +72,7 @@ var Block = module.exports = function (data, opts) {
 
   // parse transactions
   for (i = 0; i < rawTransactions.length; i++) {
-    var tx = new Tx(rawTransactions[i])
+    var tx = new Transaction(rawTransactions[i], opts)
     tx._homestead = true
     this.transactions.push(tx)
   }

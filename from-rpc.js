@@ -1,5 +1,5 @@
 'use strict'
-const Transaction = require('ethereumjs-tx')
+const { Transaction } = require('ethereumjs-tx')
 const ethUtil = require('ethereumjs-util')
 const Block = require('./')
 const blockHeaderFromRpc = require('./header-from-rpc')
