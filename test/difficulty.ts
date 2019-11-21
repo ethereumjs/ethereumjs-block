@@ -29,8 +29,7 @@ tape('[Header]: difficulty tests', t => {
     homestead: require('./difficultyHomestead.json').tests,
     byzantium: require('./difficultyByzantium.json').tests,
     constantinople: require('./difficultyConstantinople.json').tests,
-    eip2384: require('./difficultyEIP2384.json').tests,
-    eip2384Randon: require('./difficultyEIP2384_random.json').tests
+    eip2384: Object.assign(require('./difficultyEIP2384.json').tests, require('./difficultyEIP2384_random.json').tests)
   }
   for (const hardfork in hardforkTestData) {
     const testData = hardforkTestData[hardfork]
