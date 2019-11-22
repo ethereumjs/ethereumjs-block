@@ -32,6 +32,7 @@ tape('[Header]: difficulty tests', t => {
     mountainGlacier: Object.assign(
       require('./difficultyEIP2384.json').tests,
       require('./difficultyEIP2384_random.json').tests,
+      require('./difficultyEIP2384_random_to20M.json').tests,
     ),
   }
   for (const hardfork in hardforkTestData) {
