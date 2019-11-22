@@ -161,7 +161,7 @@ export class BlockHeader {
       dif = parentDif.add(offset.mul(a))
     }
 
-    if (this._common.hardforkGteHardfork(hardfork, 'eip2384')) {
+    if (this._common.hardforkGteHardfork(hardfork, 'mountainGlacier')) {
       // Istanbul/Berlin difficulty bomb delay (EIP2384)
       num.isubn(9000000)
       if (num.ltn(0)) {
