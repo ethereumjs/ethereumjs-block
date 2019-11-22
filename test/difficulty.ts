@@ -29,7 +29,10 @@ tape('[Header]: difficulty tests', t => {
     homestead: require('./difficultyHomestead.json').tests,
     byzantium: require('./difficultyByzantium.json').tests,
     constantinople: require('./difficultyConstantinople.json').tests,
-    eip2384: Object.assign(require('./difficultyEIP2384.json').tests, require('./difficultyEIP2384_random.json').tests)
+    eip2384: Object.assign(
+      require('./difficultyEIP2384.json').tests,
+      require('./difficultyEIP2384_random.json').tests,
+    ),
   }
   for (const hardfork in hardforkTestData) {
     const testData = hardforkTestData[hardfork]
@@ -45,7 +48,12 @@ tape('[Header]: difficulty tests', t => {
       block.header.difficulty = test.currentDifficulty
       block.header.number = test.currentBlockNumber
 
-      runDifficultyTests(test, parentBlock, block, `fork determination by hardfork param (${hardfork})`)
+      runDifficultyTests(
+        test,
+        parentBlock,
+        block,
+        `fork determination by hardfork param (${hardfork})`,
+      )
     }
   }
 
@@ -67,7 +75,12 @@ tape('[Header]: difficulty tests', t => {
       block.header.difficulty = test.currentDifficulty
       block.header.number = test.currentBlockNumber
 
-      runDifficultyTests(test, parentBlock, block, `fork determination by block number (${test.currentBlockNumber})`)
+      runDifficultyTests(
+        test,
+        parentBlock,
+        block,
+        `fork determination by block number (${test.currentBlockNumber})`,
+      )
     }
   }
 
