@@ -1,7 +1,7 @@
 # SYNOPSIS
 
 [![NPM Package](https://img.shields.io/npm/v/ethereumjs-block.svg?style=flat-square)](https://www.npmjs.org/package/ethereumjs-block)
-[![Build Status](https://img.shields.io/travis/ethereumjs/ethereumjs-block.svg?branch=master&style=flat-square)](https://travis-ci.org/ethereumjs/ethereumjs-block)
+[![Actions Status](https://github.com/ethereumjs/ethereumjs-block/workflows/block-test/badge.svg)](https://github.com/ethereumjs/ethereumjs-block/actions)
 [![Coverage Status](https://img.shields.io/coveralls/ethereumjs/ethereumjs-block.svg?style=flat-square)](https://coveralls.io/r/ethereumjs/ethereumjs-block)
 [![Gitter](https://img.shields.io/gitter/room/ethereum/ethereumjs-lib.svg?style=flat-square)]() or #ethereumjs on freenode
 
@@ -22,6 +22,8 @@ This module work with `browserify`.
 # TESTING
 
 Tests in the `tests` directory are partly outdated and testing is primarily done by running the `BlockchainTests` from within the [ethereumjs-vm](https://github.com/ethereumjs/ethereumjs-vm) repository.
+
+To avoid bloating this repository with [ethereum/test](https://github.com/ethereum/tests) JSON files, we usually copy specific JSON files and wrap them with some metadata (source, date, commit hash). There's a helper to aid on that process and can be found at [wrap-ethereum-test.sh](https://github.com/ethereumjs/ethereumjs-block/blob/master/scripts/wrap-ethereum-test.sh).
 
 # EthereumJS
 
