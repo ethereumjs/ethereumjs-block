@@ -21,10 +21,15 @@ tape('[Header]: difficulty tests', t => {
   }
 
   const hardforkTestData = {
-    'chainstart': require('./difficultyFrontier.json').tests,
-    'homestead': require('./difficultyHomestead.json').tests,
-    'byzantium': require('./difficultyByzantium.json').tests,
-    'constantinople': require('./difficultyConstantinople.json').tests
+    chainstart: require('./difficultyFrontier.json').tests,
+    homestead: require('./difficultyHomestead.json').tests,
+    byzantium: require('./difficultyByzantium.json').tests,
+    constantinople: require('./difficultyConstantinople.json').tests,
+    muirGlacier: Object.assign(
+      require('./difficultyEIP2384.json').tests,
+      require('./difficultyEIP2384_random.json').tests,
+      require('./difficultyEIP2384_random_to20M.json').tests,
+    )
   }
   for (let hardfork in hardforkTestData) {
     const testData = hardforkTestData[hardfork]
@@ -40,7 +45,12 @@ tape('[Header]: difficulty tests', t => {
       block.header.difficulty = test.currentDifficulty
       block.header.number = test.currentBlockNumber
 
-      runDifficultyTests(test, parentBlock, block, 'fork determination by hardfork param')
+      runDifficultyTests(
+        test,
+        parentBlock,
+        block,
+        `fork determination by hardfork param (${hardfork})`,
+      )
     }
   }
 
@@ -62,7 +72,12 @@ tape('[Header]: difficulty tests', t => {
       block.header.difficulty = test.currentDifficulty
       block.header.number = test.currentBlockNumber
 
-      runDifficultyTests(test, parentBlock, block, 'fork determination by block number')
+      runDifficultyTests(
+        test,
+        parentBlock,
+        block,
+        `fork determination by block number (${test.currentBlockNumber})`,
+      )
     }
   }
 
