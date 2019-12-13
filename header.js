@@ -127,7 +127,13 @@ BlockHeader.prototype.canonicalDifficulty = function (parentBlock) {
     dif = parentDif.add(offset.mul(a))
   }
 
-  if (this._common.hardforkGteHardfork(hardfork, 'constantinople')) {
+  if (this._common.hardforkGteHardfork(hardfork, 'muirGlacier')) {
+    // Istanbul/Berlin difficulty bomb delay (EIP2384)
+    num.isubn(9000000)
+    if (num.ltn(0)) {
+      num = new BN(0)
+    }
+  } else if (this._common.hardforkGteHardfork(hardfork, 'constantinople')) {
     // Constantinople difficulty bomb delay (EIP1234)
     num.isubn(5000000)
     if (num.ltn(0)) {
